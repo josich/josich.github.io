@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instal·la Polyorbit</title>
+<meta name="description" content="Com instal·lar Polyorbit en un mòbil Android, pas a pas.">
+<link rel="icon" href="https://josich.github.io/polyrhythm/icon-192.png">
+<style>
+  :root{--ground:#0D1318;--panel:#1A222B;--ink:#E8EEF3;--ink2:#C2CDD6;--ink3:#97A5B2;--line:#35424F;--c1:#F0AB4B;--c2:#2FC9BC;--c3:#F0729D;
+    --frame:#2A3440;--scr:#E7ECEF;--dlg:#FFFFFF;--sink:#1D2228;--sink2:#5A6570;--tgt:#0C7F77}
+  @media (prefers-color-scheme: light){
+    :root{--ground:#F4F1EA;--panel:#FFFFFF;--ink:#1D1A15;--ink2:#4A4436;--ink3:#6B6250;--line:#D8D1C2;--c1:#A16417;--c2:#0C7F77;--c3:#B83A66;
+      --frame:#3A4450}
+    .n,.dl{color:#fff!important}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  main{max-width:640px;margin:0 auto;padding:28px 16px 56px}
+  .brand{display:flex;align-items:center;gap:12px;margin:0 0 6px}
+  .brand img{width:52px;height:52px;border-radius:14px}
+  h1{font-size:27px;line-height:1.15;margin:0}
+  .sub{color:var(--ink3);margin:2px 0 0;font-size:14px}
+  .key{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--c1);
+    border-radius:12px;padding:12px 14px;margin:20px 0 22px}
+  .key svg{flex:none;width:26px;height:26px;color:var(--c1);margin-top:1px}
+  .key p{margin:0;color:var(--ink2)}
+  .key b{color:var(--ink)}
+  .dl{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:14px;background:var(--c2);
+    color:#06201E;font-weight:700;font-size:18px;text-decoration:none}
+  .dl svg{width:22px;height:22px}
+  .dlsub{text-align:center;color:var(--ink3);font-size:13px;margin:6px 0 0}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
+  .sh{display:flex;align-items:center;gap:10px}
+  .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--c2);color:#06201E;font-weight:700;display:grid;place-items:center}
+  .sh h2{font-size:18px;margin:0}
+  .step p{margin:8px 0 0;color:var(--ink2)}
+  .step p b{color:var(--ink)}
+  .tip{font-size:14px;color:var(--ink3)!important}
+  .phones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .arrow{align-self:center;color:var(--ink3);font-size:22px}
+  @media (max-width:520px){.arrow{flex-basis:100%;text-align:center;line-height:1;transform:rotate(90deg)}}
+  /* the drawn phone */
+  .ph{width:200px;background:var(--frame);border-radius:26px;padding:8px}
+  .scr{position:relative;background:var(--scr);border-radius:19px;height:250px;overflow:hidden;color:var(--sink);font-size:12.5px;line-height:1.35}
+  .bar{height:16px;display:flex;justify-content:space-between;padding:3px 14px 0;font-size:9px;color:var(--sink2)}
+  .url{margin:4px 10px;background:#fff;border-radius:12px;padding:4px 10px;font-size:10px;color:var(--sink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ghost{margin:10px 12px;height:8px;border-radius:4px;background:#D3DADF}
+  .ghost.s{width:60%}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--dlg);border-radius:16px 16px 0 0;padding:14px 14px 16px;box-shadow:0 -4px 16px rgba(0,0,0,.12)}
+  .dlg{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);background:var(--dlg);border-radius:16px;padding:14px;box-shadow:0 6px 22px rgba(0,0,0,.18)}
+  .t{font-weight:700;margin:0 0 4px}
+  .d{color:var(--sink2);font-size:11.5px;margin:0}
+  .btns{display:flex;justify-content:flex-end;gap:4px;margin-top:12px;align-items:center}
+  .b{font-weight:600;font-size:11.5px;color:var(--sink2);padding:6px 6px;border-radius:16px;white-space:nowrap}
+  .tgt{position:relative;background:var(--tgt);color:#fff;padding:6px 10px}
+  .tgt::after{content:"";position:absolute;inset:-6px;border:3px solid var(--c2);border-radius:22px;animation:tap 1.6s ease-out infinite}
+  @keyframes tap{0%{opacity:.95;transform:scale(.92)}70%{opacity:0;transform:scale(1.15)}100%{opacity:0;transform:scale(1.15)}}
+  @media (prefers-reduced-motion: reduce){.tgt::after{animation:none;opacity:.9}}
+  .ico{width:30px;height:30px;margin:0 0 8px}
+  .row{display:flex;align-items:center;gap:8px}
+  .file{width:28px;height:28px;border-radius:6px;background:#D3DADF;display:grid;place-items:center;font-size:9px;font-weight:700;color:var(--sink2);flex:none}
+  .appic{width:40px;height:40px;border-radius:10px;flex:none}
+  .set{padding:10px 12px}
+  .set .hd{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;margin:4px 0 14px}
+  .opt{display:flex;align-items:center;justify-content:space-between;background:var(--dlg);border-radius:14px;padding:12px}
+  .sw{position:relative;width:38px;height:22px;border-radius:11px;background:var(--tgt);flex:none}
+  .sw::before{content:"";position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff}
+  .sw::after{content:"";position:absolute;inset:-7px;border:3px solid var(--c2);border-radius:18px;animation:tap 1.6s ease-out infinite}
+  .home{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 6px;padding:22px 12px}
+  .home i{display:block;width:34px;height:34px;border-radius:10px;background:#D3DADF;margin:0 auto}
+  .home .me{text-align:center;font-size:9px;font-style:normal;color:var(--sink)}
+  .home .me img{display:block;width:34px;height:34px;border-radius:10px;margin:0 auto 3px;outline:3px solid var(--c2);outline-offset:3px}
+  .more{color:var(--sink2);font-size:11.5px;margin:8px 0 0}
+  .step .scr p{margin:0}
+  .step .scr .t{color:var(--sink);margin:0 0 4px}
+  .step .scr .d{color:var(--sink2)}
+  .step .scr .more{color:var(--sink2);margin:8px 0 0}
+  h3{font-size:17px;margin:30px 0 8px}
+  .fix{display:grid;gap:10px}
+  .f{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .f b{display:block;margin-bottom:2px}
+  .f span{color:var(--ink2);font-size:14.5px}
+  .small{color:var(--ink3);font-size:13px;margin-top:8px}
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink3);font-size:14px}
+  a{color:var(--c2)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <img src="https://josich.github.io/polyrhythm/icon-192.png" alt="">
+    <div><h1>Instal·la Polyorbit</h1><p class="sub">Mòbils Android · uns 2 minuts</p></div>
+  </div>
+
+  <div class="key">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17.5v.5"/></svg>
+    <p><b>Android avisarà 2 o 3 cops</b> perquè l'app no ve de Play Store. És normal: toca sempre el botó marcat.</p>
+  </div>
+
+  <a class="dl" href="https://github.com/josich/polyorbit-app/releases/latest/download/polyorbit.apk">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+    Descarrega Polyorbit
+  </a>
+  <p class="dlsub">5 MB · Android 7 o més nou</p>
+
+  <!-- 1 -->
+  <section class="step">
+    <div class="sh"><span class="n">1</span><h2>Obre-ho amb Chrome</h2></div>
+    <p>Toca el botó de dalt. Si la pàgina s'ha obert dins WhatsApp o Instagram, toca <b>⋮</b> i tria <b>Obre a Chrome</b>.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="row" style="padding:6px 12px;justify-content:space-between"><b style="font-size:12px">josich.github.io</b><b style="font-size:16px">⋮</b></div>
+        <div class="ghost"></div><div class="ghost s"></div>
+        <div class="dlg" style="top:auto;bottom:auto;transform:none;top:44px;left:auto;right:10px;width:150px;padding:8px">
+          <div class="b" style="display:block;padding:6px 4px">Copia l'enllaç</div>
+          <div class="b tgt" style="display:block;text-align:left">Obre a Chrome</div>
+          <div class="b" style="display:block;padding:6px 4px">Comparteix</div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="step">
+    <div class="sh"><span class="n">2</span><h2>Chrome avisa del fitxer</h2></div>
+    <p>Toca <b>Baixa igualment</b>.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="url">josich.github.io/instal.html</div>
+        <div class="ghost"></div><div class="ghost s"></div><div class="ghost"></div>
+        <div class="sheet">
+          <p class="t">Vols conservar polyorbit.apk igualment?</p>
+          <p class="d">Aquest tipus de fitxer pot fer malbé el dispositiu.</p>
+          <div class="btns"><span class="b">Cancel·la</span><span class="b tgt">Baixa igualment</span></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="step">
+    <div class="sh"><span class="n">3</span><h2>Obre el fitxer</h2></div>
+    <p>Quan acabi de baixar, toca <b>Obre</b>.</p>
+    <p class="tip">Si no surt, busca polyorbit.apk a l'app <b>Fitxers</b> › Baixades.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="url">josich.github.io/instal.html</div>
+        <div class="ghost"></div><div class="ghost s"></div><div class="ghost"></div>
+        <div class="sheet">
+          <div class="row"><span class="file">APK</span><div style="flex:1;min-width:0"><p class="t" style="margin:0">polyorbit.apk</p><p class="d">5 MB · baixat</p></div><span class="b tgt">Obre</span></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="step">
+    <div class="sh"><span class="n">4</span><h2>Dona permís a Chrome</h2></div>
+    <p>Només el primer cop: toca <b>Configuració</b>, activa <b>Permet d'aquesta font</b> i torna enrere amb ←.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="dlg">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#5A6570" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M12 9v4M12 16v.5"/></svg>
+          <p class="t">Per seguretat, el telèfon no pot instal·lar apps d'aquesta font.</p>
+          <div class="btns"><span class="b">Cancel·la</span><span class="b tgt">Configuració</span></div>
+        </div>
+      </div></div>
+      <span class="arrow">›</span>
+      <div class="ph"><div class="scr set">
+        <div class="hd"><span style="font-size:16px">←</span> Instal·la apps desconegudes</div>
+        <div class="row" style="margin:0 0 12px"><span class="file" style="border-radius:50%">●</span><b style="font-size:12.5px">Chrome</b></div>
+        <div class="opt"><span style="font-size:12px;font-weight:600">Permet d'aquesta font</span><span class="sw"></span></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="step">
+    <div class="sh"><span class="n">5</span><h2>Instal·la</h2></div>
+    <p>Toca <b>Instal·la</b>.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="sheet">
+          <div class="row" style="margin-bottom:8px"><img class="appic" src="https://josich.github.io/polyrhythm/icon-192.png" alt=""><p class="t" style="margin:0">Polyorbit</p></div>
+          <p class="d">Vols instal·lar aquesta aplicació?</p>
+          <div class="btns"><span class="b">Cancel·la</span><span class="b tgt">Instal·la</span></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="step">
+    <div class="sh"><span class="n">6</span><h2>L'escut de Google</h2></div>
+    <p>Si surt <b>Play Protect</b>: toca <b>Més detalls</b> i després <b>Instal·la igualment</b>.</p>
+    <p class="tip">Si et pregunta si vols enviar l'app a analitzar, pots dir que no.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr" style="height:290px">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="dlg">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#5A6570" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <p class="t">App no reconeguda</p>
+          <p class="d">Play Protect no coneix el desenvolupador d'aquesta app.</p>
+          <p class="more">Més detalls ▴</p>
+          <div class="btns" style="flex-direction:column;align-items:stretch;gap:8px;text-align:center"><span class="b tgt">Instal·la igualment</span><span class="b">D'acord</span></div>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="step">
+    <div class="sh"><span class="n">7</span><h2>Ja la tens</h2></div>
+    <p>Toca <b>Obre</b>. La icona queda a la pantalla d'inici.</p>
+    <div class="phones">
+      <div class="ph"><div class="scr">
+        <div class="bar"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="sheet">
+          <div class="row" style="margin-bottom:8px"><img class="appic" src="https://josich.github.io/polyrhythm/icon-192.png" alt=""><p class="t" style="margin:0">App instal·lada</p></div>
+          <div class="btns"><span class="b">Fet</span><span class="b tgt">Obre</span></div>
+        </div>
+      </div></div>
+      <span class="arrow">›</span>
+      <div class="ph"><div class="scr" style="background:linear-gradient(160deg,#3B4D5E,#1D2A36)">
+        <div class="bar" style="color:#C9D3DB"><span>12:00</span><span>▾ ▮</span></div>
+        <div class="home">
+          <i></i><i></i><i></i><i></i><i></i>
+          <em class="me" style="color:#fff"><img src="https://josich.github.io/polyrhythm/icon-192.png" alt="">Polyorbit</em>
+          <i></i><i></i>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <p class="small">Els textos poden canviar una mica segons el mòbil.</p>
+
+  <h3>Si el mòbil ho bloqueja</h3>
+  <div class="fix">
+    <div class="f"><b>Samsung</b><span>Si posa <i>Bloqueig automàtic</i>: Configuració › Seguretat i privadesa › Bloqueig automàtic › desactiva'l. Instal·la i torna'l a activar.</span></div>
+    <div class="f"><b>Huawei</b><span>Si posa <i>Mode pur</i>: toca Instal·la igualment, o desactiva'l a Configuració › Sistema › Mode pur.</span></div>
+    <div class="f"><b>Xiaomi / Redmi</b><span>Pot fer-te esperar uns segons o marcar una casella. Després toca Instal·la igualment.</span></div>
+    <div class="f"><b>iPhone</b><span>De moment només hi ha app per a Android.</span></div>
+  </div>
+
+  <h3>Després</h3>
+  <div class="fix">
+    <div class="f"><b>Versions noves</b><span>L'app avisa amb <i>New version ready</i> › <i>Download</i>. Repeteix els passos 3, 5 i 6. El teu progrés es manté.</span></div>
+    <div class="f"><b>Ja la feies servir al navegador?</b><span>L'app comença buida. Al navegador: Practice log › <i>Backup</i>. A l'app: Practice log › <i>Restore</i>.</span></div>
+    <div class="f"><b>La teva opinió</b><span>Dins l'app: ☰ › More › <i>Enquesta</i>. Gràcies!</span></div>
+  </div>
+
+  <footer>Dubtes: <a href="mailto:polyorbit.app@gmail.com">polyorbit.app@gmail.com</a></footer>
+</main>
+</body>
+</html>

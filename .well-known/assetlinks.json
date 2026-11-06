@@ -3,6 +3,9 @@
   "target": {
     "namespace": "android_app",
     "package_name": "io.github.josich.polyorbit",
-    "sha256_cert_fingerprints": ["57:A3:36:C1:60:75:3F:2F:19:15:2A:83:8D:6C:4F:A9:8D:C9:74:A4:F5:96:B9:C4:52:06:CF:4E:D2:F7:A6:49"]
+    "sha256_cert_fingerprints": [
+      "57:A3:36:C1:60:75:3F:2F:19:15:2A:83:8D:6C:4F:A9:8D:C9:74:A4:F5:96:B9:C4:52:06:CF:4E:D2:F7:A6:49",
+      "19:5D:FA:7E:F9:93:18:08:57:97:37:80:24:59:36:F0:F1:5B:E2:DD:EA:B1:F5:1C:14:D2:F3:38:02:C1:A5:8E"
+    ]
   }
 }]
